@@ -40,6 +40,9 @@
 - Tab 8 - log
     - `kubectl get pods`
     - `kubectl logs spring-test3-5d68496c4d-kf6sv`
+    - `kubectl logs --selector app=spring-test3 -n=my-spring-app -f`
+- Tab - exec
+    - `kubectl exec -t -i spring-test3-7c48cbdbfd-5h94v -n=my-spring-app bash`
 - Tab 9 - build
     - `C:\Java\GitHub\spring\spring-test3>gradlew bootBuildImage`
     - `C:\Java\GitHub\spring\spring-test3>docker tag spring-test3:0.0.1 balavigneswaran/spring-test3:latest`
