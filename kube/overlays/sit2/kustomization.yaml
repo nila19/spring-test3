@@ -1,0 +1,21 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+commonLabels:
+  app: spring-test3
+  environment: sit2
+resources:
+- ../../base
+patchesStrategicMerge:
+- env-sit2.yaml
+- config-map-sit2.yaml
+configMapGenerator:
+- name: spring-test3-config2
+  behavior: replace
+  literals:
+  - region.cd=sit2
+  - dialect=h2-dialect
+secretGenerator:
+- literals:
+  - db-password=12345
+  name: sl-demo-app
+  type: Opaque

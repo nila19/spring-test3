@@ -1,0 +1,23 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: my-spring-app
+commonLabels:
+  app: spring-test3
+  environment: base
+resources:
+  - namespace.yaml
+  - deployment.yaml
+  - service.yaml
+  - config-map-global.yaml
+configMapGenerator:
+- name: spring-test3-config-yaml
+  files:
+  - props/application-dev.yaml
+  - props/application-sit2.yaml
+  - props/application-sit3.yaml
+  - props/application-sit4.yaml
+  - images/Bengal_Tiger.jpg
+- name: spring-test3-config2
+  literals:
+    - region.cd=dev
+    - dialect=oracle-dialect

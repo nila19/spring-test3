@@ -1,0 +1,17 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+commonLabels:
+  app: spring-test3
+  environment: sit4
+bases:
+- ../../base
+patchesStrategicMerge:
+- env-sit4.yaml
+- config-map-sit4.yaml
+- replica-sit4.yaml
+configMapGenerator:
+- name: spring-test3-config2
+  behavior: replace
+  literals:
+    - region.cd=sit4
+    - dialect=mysql-dialect

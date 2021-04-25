@@ -1,0 +1,10 @@
+app:
+  lives: "1000"
+  enemies:
+    cheat:
+      level: noGoodRotten
+  url:
+    nameService: http://k8s-workshop-name-service
+  hello:
+    message: Hello DEV World!!!
+    from-id: bala@dev-xyz.com
