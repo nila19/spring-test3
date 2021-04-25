@@ -1,0 +1,72 @@
+server:
+  port: 8080
+  #  servlet:
+  #    context-path: /spring-test3
+  shutdown: graceful
+
+info:
+  app:
+    name: Spring-Test
+    description: Application to test integration of different modules of Spring boot
+    modules:
+      other: ehcache, jasypt, modelmapper, lombok, openapi, h2
+      spring: spring-boot, actuator, data-jpa, cache
+    code: ENC(bGhvDwjfNy06NT8k2b2btMdyh+jWmFD46TDBHYaN31U/vMsHXD/gAJEQxc7u3DRv)
+
+#logging:
+#  level:
+#    web: trace
+#    org:
+#      springframework:
+#        web: trace
+
+spring:
+  application:
+    name: spring-test3
+  lifecycle:
+    timeout-per-shutdown-phase: 5s
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  show-actuator: true
+  packages-to-scan: org.springframework, com.springtest
+#  paths-to-match: /v1, /api/balance/**
+
+management:
+  endpoints:
+    jmx:
+      exposure:
+        exclude: "*"
+        include: info, health, metrics
+    web:
+      exposure:
+        include: "*"
+  info:
+    git:
+      mode: simple
+  metrics:
+    web:
+      server:
+        request:
+          autotime:
+            enabled: true
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+      probes:
+        enabled: true
+  health:
+    ping:
+      enabled: true
+    diskspace:
+      enabled: true
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
+
+jasypt:
+  encryptor:
+    password: C0mpl3xS@1t

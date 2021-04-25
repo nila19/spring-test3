@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: 2021-04-20T18:54:22Z
+  labels:
+    app: spring-test3
+  name: spring-test3
+spec:
+  ports:
+  - name: 8080-8080
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: spring-test3
+  type: LoadBalancer
+status:
+  loadBalancer: {}

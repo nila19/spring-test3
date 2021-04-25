@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: 2021-04-20T18:54:22Z
+  labels:
+    app: spring-test3
+  name: spring-test3
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-test3
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: 2021-04-20T18:54:22Z
+      labels:
+        app: spring-test3
+    spec:
+      containers:
+      - name: spring-test3
+        image: balavigneswaran/spring-test3:snapshot
+        imagePullPolicy: IfNotPresent
+        resources: {}
+        livenessProbe:
+          httpGet:
+            path: /actuator/health/liveness
+            port: 8080
+        readinessProbe:
+          httpGet:
+            path: /actuator/health/readiness
+            port: 8080
+        lifecycle:
+          preStop:
+            exec:
+              command: ["sh", "-c", "sleep 10"]
+        env:
+          - name: REGION_CD
+            valueFrom:
+              configMapKeyRef:
+                name: spring-test3-config2
+                key: region.cd
+          - name: dialect
+            valueFrom:
+              configMapKeyRef:
+                name: spring-test3-config2
+                key: dialect
+status: {}
