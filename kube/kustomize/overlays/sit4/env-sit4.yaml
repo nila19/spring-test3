@@ -1,0 +1,15 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-test3
+spec:
+  template:
+    spec:
+      containers:
+      - name: spring-test3
+        env:
+          - name: REGION_CD
+            valueFrom:
+              configMapKeyRef:
+                name: spring-test3-config2
+                key: region.cd

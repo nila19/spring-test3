@@ -1,0 +1,28 @@
+apiVersion: skaffold/v2beta14
+kind: Config
+metadata:
+  name: my-kube-skaffold
+build:
+  artifacts:
+  - image: balavigneswaran/spring-test3
+    buildpacks:
+      builder: gcr.io/paketo-buildpacks/builder:base-platform-api-0.3
+      dependencies:
+        paths:
+        - ../src
+        - ../build.gradle
+deploy:
+  kustomize:
+    paths:
+    - base
+profiles:
+- name: sit4
+  deploy:
+    kustomize:
+      paths:
+      - kustomize\overlays\sit4
+- name: sit2
+  deploy:
+    kustomize:
+      paths:
+      - kustomize\overlays\sit2

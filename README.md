@@ -48,3 +48,5 @@
     - `C:\Java\GitHub\spring\spring-test3>docker tag spring-test3:0.0.1 balavigneswaran/spring-test3:latest`
     - `C:\Java\GitHub\spring\spring-test3>kubectl set image deployments/spring-test3 spring-test3=balavigneswaran/spring-test3:latest`
     - `C:\Java\GitHub\spring\spring-test3>docker push balavigneswaran/spring-test3:latest`
+- Tab 10 - Skaffold
+    - 'C:\Java\GitHub\spring\spring-test3\kube>skaffold dev --port-forward'
